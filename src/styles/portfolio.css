@@ -1,7 +1,7 @@
 /* ==========================================================================
    PRATIBHA THOTE — TECHNICAL PORTFOLIO STYLESHEET
    Aesthetics: Deep Navy / Near-Black + Electric Cyan / Blue Accents
-   Print-Ready: Exact Color Reproduction + Non-Breaking Cards + Clickable Links
+   Print-Ready: Exact Dark A4 Reproduction + Non-Breaking Cards + High Contrast
    ========================================================================== */
 
 :root {
@@ -1109,39 +1109,191 @@ p {
 }
 
 /* ==========================================================================
-   PRINT / PDF EXPORT STYLESHEET
-   - Keeps color exact reproduction with print-color-adjust: exact
-   - Hides navigation, animated backgrounds, and scroll-to-top controls
-   - Eliminates animations/transitions and reveals all content
-   - Keeps cards/sections non-breaking across page boundaries
-   - Renders all external links cleanly with clickable targets and underlines
+   PRINT / PDF EXPORT STYLESHEET (STRICT A4 PRECISION)
    ========================================================================== */
 @media print {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
+  /* 1. Exact A4 Sizing with 12mm Margin */
   @page {
     size: A4;
-    margin: 12mm 15mm;
+    margin: 12mm;
   }
 
+  /* Keep dark theme with exact color adjustment */
   html, body {
     background-color: #070a12 !important;
     color: #f8fafc !important;
-    font-size: 14px;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
+    font-size: 13.5px;
   }
 
-  /* Hide navbar, animated/pattern backgrounds, scroll-to-top buttons, and print controls */
+  /* 2. Remove full-screen heights in print (height/min-height: auto) */
+  html,
+  body,
+  .portfolio-wrapper,
+  main,
+  section,
+  .hero-section,
+  .skills-section,
+  .projects-section,
+  .experience-section,
+  .journey-section,
+  .contact-section {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* 3. Non-breaking cards and orphan-heading protection */
+  .skill-card,
+  .spotlight-card,
+  .secondary-project-card,
+  .exp-card,
+  .journey-node,
+  .contact-card,
+  .hero-card-summary,
+  .metrics-row,
+  .spotlight-arch-box,
+  .arch-node {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  h1, h2, h3, h4, h5,
+  .section-header,
+  .section-tag,
+  .section-title,
+  .section-subtitle,
+  .exp-column-title,
+  .spotlight-top-bar,
+  .sec-card-header {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* 4. Content wrapper fits A4 with balanced grid layout and no overflow */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.25fr 0.75fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .secondary-projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+
+  .exp-hack-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+
+  .journey-timeline {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .spotlight-card,
+  .contact-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 5. Reduced vertical section padding and gaps for even page filling */
+  .hero-section {
+    padding: 1rem 0 1.5rem !important;
+  }
+
+  .hero-name {
+    font-size: 2.5rem !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  .skills-section,
+  .projects-section,
+  .experience-section,
+  .journey-section,
+  .contact-section {
+    padding: 1.25rem 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 1rem !important;
+  }
+
+  .spotlight-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .contact-card {
+    padding: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* 6. Button text contrast in print: Dark text on primary buttons, crisp contrast */
+  a {
+    text-decoration: underline !important;
+  }
+
+  a.btn {
+    display: inline-flex !important;
+    text-decoration: underline !important;
+    box-shadow: none !important;
+  }
+
+  /* Gradient/Cyan Primary buttons: High-contrast dark text */
+  a.btn-primary,
+  .btn-primary {
+    background: linear-gradient(135deg, #00e5ff, #38bdf8) !important;
+    color: #050b14 !important;
+    font-weight: 800 !important;
+    text-decoration: underline !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a.btn-primary *,
+  .btn-primary * {
+    color: #050b14 !important;
+  }
+
+  /* Secondary buttons: Solid navy background with white text and clear border */
+  a.btn-secondary,
+  .btn-secondary {
+    background: #131d31 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(56, 189, 248, 0.5) !important;
+    text-decoration: underline !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a.btn-secondary *,
+  .btn-secondary * {
+    color: #ffffff !important;
+  }
+
+  /* 7. Hide navbar, animated backgrounds, scroll-to-top, and print controls */
   .navbar,
   .bg-grid-pattern,
   .mobile-nav-drawer,
@@ -1150,81 +1302,22 @@ p {
     display: none !important;
   }
 
-  /* Make sure every scroll-reveal element / section is fully visible */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
   *,
   .reveal,
   .fade-in,
   [data-reveal],
   .portfolio-wrapper,
-  .main-content,
+  main,
   section {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
-  }
-
-  .portfolio-wrapper {
-    display: block !important;
-    min-height: auto !important;
-  }
-
-  .container {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .hero-section {
-    padding: 1.5rem 0 2rem !important;
-  }
-
-  .hero-name {
-    font-size: 2.6rem !important;
-    background: none !important;
-    -webkit-text-fill-color: #ffffff !important;
-    color: #ffffff !important;
-  }
-
-  /* Section Spacing in Print */
-  .skills-section,
-  .projects-section,
-  .experience-section,
-  .journey-section,
-  .contact-section {
-    padding: 2rem 0 !important;
-  }
-
-  .section-header {
-    margin-bottom: 1.5rem !important;
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-
-  /* Avoid page breaks inside cards/sections */
-  section,
-  .section,
-  .spotlight-card,
-  .secondary-project-card,
-  .skill-card,
-  .exp-card,
-  .journey-node,
-  .contact-card,
-  .hero-card-summary,
-  .metrics-row,
-  .spotlight-arch-box {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  /* Underline all links in print mode for ATS / Recruiter clarity */
-  a {
-    text-decoration: underline !important;
-    color: var(--accent-cyan) !important;
-  }
-
-  /* Keep link buttons rendered with clickable text and clear boundaries */
-  a.btn {
-    display: inline-flex !important;
-    text-decoration: underline !important;
-    border: 1px solid rgba(56, 189, 248, 0.4) !important;
   }
 }
