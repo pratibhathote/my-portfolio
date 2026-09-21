@@ -42,7 +42,7 @@ export default function ProjectsSection() {
               <div className="spotlight-subtitle">{featuredProject.subtitle}</div>
             </div>
 
-            <div className="spotlight-actions no-print">
+            <div className="spotlight-actions">
               <a 
                 href={featuredProject.links.liveDemo} 
                 target="_blank" 

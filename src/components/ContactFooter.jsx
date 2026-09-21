@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Github, Linkedin, Printer, ArrowUp, Phone } from 'lucide-react';
+import { Mail, Github, Linkedin, Printer, ArrowUp, Phone, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function ContactFooter() {
@@ -41,6 +41,17 @@ export default function ContactFooter() {
             </a>
 
             <a 
+              href="/resume.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-secondary"
+              title="View 1-Page ATS Resume"
+            >
+              <FileText size={16} />
+              <span>1-Page Resume (CV)</span>
+            </a>
+
+            <a 
               href={personalInfo.links.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -65,10 +76,10 @@ export default function ContactFooter() {
             <button 
               onClick={handlePrint} 
               className="btn btn-secondary no-print"
-              title="Export this portfolio to PDF"
+              title="Download / Save as PDF"
             >
               <Printer size={16} />
-              <span>Export PDF</span>
+              <span>Download / Save as PDF</span>
             </button>
           </div>
         </div>

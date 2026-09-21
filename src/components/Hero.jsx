@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Github, Linkedin, Mail, CheckCircle2, ShieldCheck, Cpu } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, CheckCircle2, ShieldCheck, Cpu, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Hero() {
@@ -39,6 +39,17 @@ export default function Hero() {
               <a href="#projects" className="btn btn-primary">
                 <span>View Projects</span>
                 <ArrowDown size={16} />
+              </a>
+
+              <a 
+                href="/resume.html" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                title="View 1-Page ATS Resume"
+              >
+                <FileText size={16} />
+                <span>Resume (CV)</span>
               </a>
 
               <a 

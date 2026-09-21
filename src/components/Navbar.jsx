@@ -15,7 +15,8 @@ export default function Navbar() {
     { label: "Experience", href: "#experience" },
     { label: "Hackathons", href: "#hackathons" },
     { label: "Journey", href: "#journey" },
-    { label: "Contact", href: "#contact" }
+    { label: "Contact", href: "#contact" },
+    { label: "Resume (CV)", href: "/resume.html" }
   ];
 
   return (
@@ -41,11 +42,11 @@ export default function Navbar() {
           <div className="nav-actions">
             <button 
               onClick={handlePrint}
-              className="btn btn-secondary btn-sm print-btn"
-              title="Print or Export Portfolio to PDF"
+              className="btn btn-secondary btn-sm print-btn no-print"
+              title="Download / Save as PDF"
             >
               <Printer size={15} />
-              <span>Export PDF</span>
+              <span>Download / Save as PDF</span>
             </button>
 
             <a 
@@ -93,11 +94,11 @@ export default function Navbar() {
         ))}
         <button 
           onClick={() => { setMobileMenuOpen(false); handlePrint(); }}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm no-print"
           style={{ marginTop: '0.5rem', width: '100%' }}
         >
           <Printer size={15} />
-          <span>Export to PDF</span>
+          <span>Download / Save as PDF</span>
         </button>
       </div>
     </header>

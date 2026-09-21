@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratibha Thote — Resume / CV</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       ATS-FRIENDLY ONE-PAGE RESUME / CV STYLESHEET
+       Spacious, Presentable & Perfectly Balanced A4 Layout
+       ========================================================================== */
+    
+    :root {
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-light: #64748b;
+      --accent: #0284c7;
+      --accent-dark: #0369a1;
+      --border-color: #cbd5e1;
+      --border-subtle: #e2e8f0;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: #f8fafc;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.45;
+      font-size: 9.2pt;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Print / Action Toolbar (screen only) */
+    .screen-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    }
+
+    .toolbar-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-print {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    .btn-back {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Resume Page Container (A4 Proportions) */
+    .resume-page-wrapper {
+      padding: 2rem 0 3.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .resume-page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      background: #ffffff;
+      padding: 13mm 15mm;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER SECTION */
+    .header {
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 9pt;
+      margin-bottom: 12pt;
+    }
+
+    .name {
+      font-size: 21pt;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-main);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 9.6pt;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-top: 3pt;
+      margin-bottom: 6pt;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4pt 12pt;
+      font-size: 8.5pt;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 3.5pt;
+    }
+
+    .contact-item a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .separator {
+      color: var(--border-color);
+      font-weight: 300;
+    }
+
+    /* SECTION COMPONENTS */
+    .section {
+      margin-bottom: 11pt;
+    }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-main);
+      border-bottom: 1.5px solid var(--border-color);
+      padding-bottom: 2.5pt;
+      margin-bottom: 6.5pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    /* EDUCATION */
+    .edu-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .edu-left {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 9.4pt;
+    }
+
+    .edu-sub {
+      color: var(--text-muted);
+      font-size: 8.8pt;
+      font-weight: 500;
+      margin-top: 1.5pt;
+    }
+
+    .edu-right {
+      text-align: right;
+      font-size: 8.8pt;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .edu-cgpa {
+      font-size: 8.5pt;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-top: 1.5pt;
+    }
+
+    /* TECHNICAL SKILLS TABLE */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.8pt;
+    }
+
+    .skills-table td {
+      padding: 2pt 0;
+      vertical-align: top;
+    }
+
+    .skill-cat {
+      width: 120pt;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-val {
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* EXPERIENCE & PROJECTS */
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2.5pt;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 9.3pt;
+      color: var(--text-main);
+    }
+
+    .item-org {
+      font-weight: 600;
+      color: var(--accent-dark);
+      font-size: 8.8pt;
+    }
+
+    .item-tech {
+      font-family: var(--font-mono);
+      font-size: 7.8pt;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .item-links {
+      font-size: 8.2pt;
+      font-family: var(--font-mono);
+      margin-left: 6pt;
+    }
+
+    .item-links a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .item-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* BULLET LISTS */
+    .bullet-list {
+      list-style-type: square;
+      padding-left: 13pt;
+      margin-top: 2pt;
+      margin-bottom: 6pt;
+    }
+
+    .bullet-list li {
+      font-size: 8.6pt;
+      color: var(--text-muted);
+      line-height: 1.42;
+      margin-bottom: 2.5pt;
+    }
+
+    .bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .bullet-list strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* ACTIVITIES LIST */
+    .activity-list {
+      list-style-type: square;
+      padding-left: 13pt;
+    }
+
+    .activity-list li {
+      font-size: 8.6pt;
+      color: var(--text-muted);
+      line-height: 1.42;
+      margin-bottom: 3.5pt;
+    }
+
+    .activity-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA QUERY (STRICT 1-PAGE A4 PRECISION)
+       ========================================================================== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .resume-page-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+
+      .resume-page {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        padding: 12mm 14mm !important;
+        box-shadow: none !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      a {
+        color: var(--text-main) !important;
+        text-decoration: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-Only Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-title">
+      <span>📄 Pratibha Thote — 1-Page ATS Resume</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-print" onclick="window.print()">
+        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Print / Save as PDF</span>
+      </button>
+      <a href="/" class="btn-back">← Back to Portfolio</a>
+    </div>
+  </div>
+
+  <div class="resume-page-wrapper">
+    <main class="resume-page" id="resumeContent">
+      
+      <!-- HEADER -->
+      <header class="header">
+        <h1 class="name">Pratibha Thote</h1>
+        <div class="headline">2nd Year B.Tech Student &bull; Computer Science & Artificial Intelligence Student &bull; IGDTUW</div>
+        
+        <div class="contact-row">
+          <span class="contact-item">
+            📍 Delhi, India
+          </span>
+          <span class="separator">&bull;</span>
+          <span class="contact-item">
+            📞 <a href="tel:+918920824867">+91 8920824867</a>
+          </span>
+          <span class="separator">&bull;</span>
+          <span class="contact-item">
+            ✉️ <a href="mailto:pratibhthote151@gmail.com">pratibhthote151@gmail.com</a>
+          </span>
+          <span class="separator">&bull;</span>
+          <span class="contact-item">
+            🔗 <a href="https://www.linkedin.com/in/pratibha-thote-1b822137b/" target="_blank">linkedin.com/in/pratibha-thote</a>
+          </span>
+          <span class="separator">&bull;</span>
+          <span class="contact-item">
+            💻 <a href="https://github.com/pratibhathote" target="_blank">github.com/pratibhathote</a>
+          </span>
+          <span class="separator">&bull;</span>
+          <span class="contact-item">
+            🌐 <a href="https://my-portfolio-kappa-weld-95.vercel.app/" target="_blank">portfolio-live</a>
+          </span>
+        </div>
+      </header>
+
+      <!-- EDUCATION -->
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-block">
+          <div>
+            <div class="edu-left">Indira Gandhi Delhi Technical University for Women (IGDTUW)</div>
+            <div class="edu-sub">B.Tech — Computer Science & Engineering (Artificial Intelligence)</div>
+          </div>
+          <div class="edu-right">
+            <div>2025 – 2029</div>
+            <div class="edu-cgpa">CGPA: 7.5 / 10</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNICAL SKILLS -->
+      <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <table class="skills-table">
+          <tbody>
+            <tr>
+              <td class="skill-cat">Languages</td>
+              <td class="skill-val">C++, Python, JavaScript</td>
+            </tr>
+            <tr>
+              <td class="skill-cat">AI / Machine Learning</td>
+              <td class="skill-val">Machine Learning, NLP, Scikit-learn, Pandas, NumPy</td>
+            </tr>
+            <tr>
+              <td class="skill-cat">Development</td>
+              <td class="skill-val">React, FastAPI, HTML, CSS, REST APIs</td>
+            </tr>
+            <tr>
+              <td class="skill-cat">CS Fundamentals</td>
+              <td class="skill-val">Data Structures & Algorithms, Object-Oriented Programming (OOP), DBMS</td>
+            </tr>
+            <tr>
+              <td class="skill-cat">Tools & Platforms</td>
+              <td class="skill-val">Git, GitHub, VS Code</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <div>
+          <div class="item-header">
+            <div>
+              <span class="item-title">Machine Learning & Generative AI Intern</span>
+              <span style="color: var(--text-light); font-size: 8.5pt;"> &bull; </span>
+              <span class="item-org">IGDTUW Anveshan Foundation</span>
+            </div>
+            <div class="item-tech">Python &bull; ML &bull; GenAI</div>
+          </div>
+          <ul class="bullet-list">
+            <li>Worked with machine learning workflows using Python, including data preprocessing, model development and evaluation.</li>
+            <li>Developed a <strong>Predictive Waste Management System</strong> using historical waste-management data and machine learning.</li>
+            <li>Applied model-based prediction and analysis to build an interactive prototype for waste collection planning.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section">
+        <h2 class="section-title">Projects</h2>
+        
+        <!-- Project 1: PayShield -->
+        <div style="margin-bottom: 7pt;">
+          <div class="item-header">
+            <div>
+              <span class="item-title">PayShield — AI Pre-Payment Risk & Scam Analyzer</span>
+              <span class="item-links">
+                [<a href="https://github.com/pratibhathote/PayShield" target="_blank">GitHub</a> | <a href="https://pay-shield-et0qvaj9v-pratibhathote.vercel.app/" target="_blank">Live Demo</a>]
+              </span>
+            </div>
+            <div class="item-tech">Python, Scikit-learn, FastAPI, React, NLP</div>
+          </div>
+          <ul class="bullet-list">
+            <li>Built an AI-assisted pre-payment risk analyzer combining transaction anomaly detection and scam-message analysis.</li>
+            <li>Used Isolation Forest and explainable behavioral rules to identify suspicious transaction patterns and generate risk scores (0–100).</li>
+            <li>Developed and deployed a React dashboard with FastAPI APIs providing risk levels, risk factors and recommended actions.</li>
+          </ul>
+        </div>
+
+        <!-- Project 2: UAV Digital Twin System -->
+        <div style="margin-bottom: 7pt;">
+          <div class="item-header">
+            <div>
+              <span class="item-title">AI-Enabled UAV Engine Health & RUL System</span>
+              <span style="font-size: 8pt; color: var(--accent-dark); font-weight: 600; margin-left: 4pt;">(Team Project — Member 3: RUL & Engine Health)</span>
+            </div>
+            <div class="item-tech">Python, Machine Learning, ONNX, Predictive Maintenance</div>
+          </div>
+          <ul class="bullet-list">
+            <li>Contributed as Member 3 — RUL & Engine Health to an AI-enabled UAV engine monitoring system.</li>
+            <li>Developed mission-wise Remaining Useful Life (RUL) and severity prediction workflows and exported models for ONNX inference.</li>
+            <li>Achieved <strong>MAE 0.68</strong>, <strong>RMSE 3.61</strong>, and <strong>R² 0.9924</strong> in mission-wise RUL evaluation.</li>
+          </ul>
+        </div>
+
+        <!-- Project 3: Predictive Waste Management -->
+        <div>
+          <div class="item-header">
+            <div>
+              <span class="item-title">Predictive Waste Management System</span>
+            </div>
+            <div class="item-tech">Python, Machine Learning, Random Forest, Pandas</div>
+          </div>
+          <ul class="bullet-list">
+            <li>Developed an ML-based system for predicting waste collection requirements from historical waste-management data.</li>
+            <li>Performed data preprocessing, feature analysis and Random Forest model development for predictive analysis.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROGRAMS & TECHNICAL ACTIVITIES -->
+      <section class="section" style="margin-bottom: 0;">
+        <h2 class="section-title">Programs & Technical Activities</h2>
+        <ul class="activity-list">
+          <li>
+            <strong>GirlScript Summer of Code 2026:</strong> Selected for Open Source + AI Agent Track.
+          </li>
+          <li>
+            <strong>ONE HACK 2026 (AI × Web3 Hackathon):</strong> Built an AI-agent service/payment workflow with x402-style payment handling, Sepolia transaction verification, replay protection and idempotency.
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>
