@@ -1110,45 +1110,256 @@ p {
 
 /* ==========================================================================
    PRINT / PDF EXPORT STYLESHEET (STRICT A4 PRECISION)
+   - Zero cutoff, perfectly bounded 12mm margins, full dark theme
+   - Guaranteed non-breaking cards and headings
+   - High contrast buttons and fully clickable links
    ========================================================================== */
 @media print {
-  /* 1. Exact A4 Sizing with 12mm Margin */
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 10mm 12mm;
   }
 
-  /* Keep dark theme with exact color adjustment */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   html, body {
     background-color: #070a12 !important;
     color: #f8fafc !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
-    font-size: 13.5px;
   }
 
-  /* 2. Remove full-screen heights in print (height/min-height: auto) */
-  html,
-  body,
+  /* Full-width container with no horizontal overflow */
   .portfolio-wrapper,
   main,
   section,
-  .hero-section,
-  .skills-section,
-  .projects-section,
-  .experience-section,
-  .journey-section,
-  .contact-section {
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    display: block !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
   }
 
-  /* 3. Non-breaking cards and orphan-heading protection */
+  /* Grid Items min-width fix so right card NEVER cuts off */
+  .hero-grid,
+  .skills-grid,
+  .secondary-projects-grid,
+  .exp-hack-grid,
+  .journey-timeline,
+  .arch-pipeline-grid,
+  .features-grid {
+    display: grid !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-grid > *,
+  .skills-grid > *,
+  .secondary-projects-grid > *,
+  .exp-hack-grid > *,
+  .journey-timeline > *,
+  .arch-pipeline-grid > *,
+  .features-grid > * {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hero Layout in Print */
+  .hero-section {
+    padding: 0.75rem 0 1.25rem !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.2fr 0.8fr !important;
+    gap: 1.25rem !important;
+    align-items: start !important;
+  }
+
+  .hero-name {
+    font-size: 2.3rem !important;
+    line-height: 1.1 !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-role {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-bio {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-cta-group {
+    gap: 0.6rem !important;
+  }
+
+  .hero-card-summary {
+    padding: 1.15rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Metric cards: Keep AI × Web3 on single line */
+  .hero-metric-row {
+    gap: 0.6rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .hero-metric-box {
+    padding: 0.6rem 0.75rem !important;
+  }
+
+  .hero-metric-val,
+  .metric-val,
+  [class*="metric-val"],
+  [class*="stat-value"] {
+    white-space: nowrap !important;
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .hero-focus-list {
+    gap: 0.45rem !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .hero-focus-item {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Section Spacing in Print */
+  .skills-section,
+  .projects-section,
+  .experience-section,
+  .journey-section,
+  .contact-section {
+    padding: 1.1rem 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 0.85rem !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .section-title {
+    font-size: 1.6rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem !important;
+    margin-top: 0.25rem !important;
+  }
+
+  /* 2-Column Grids */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem !important;
+  }
+
+  .skill-card {
+    padding: 1.1rem !important;
+  }
+
+  .secondary-projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .secondary-project-card {
+    padding: 1.25rem !important;
+  }
+
+  .exp-hack-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+
+  .exp-card {
+    padding: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .journey-timeline {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem !important;
+  }
+
+  .journey-node {
+    padding: 1.1rem !important;
+  }
+
+  .spotlight-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .spotlight-title {
+    font-size: 1.75rem !important;
+  }
+
+  .spotlight-arch-box {
+    padding: 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .arch-pipeline-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .feature-pill {
+    padding: 0.5rem 0.65rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .contact-card {
+    padding: 1.75rem !important;
+    margin: 0 auto 1.5rem !important;
+    width: 100% !important;
+  }
+
+  /* Non-breaking cards and headings */
   .skill-card,
   .spotlight-card,
   .secondary-project-card,
@@ -1175,82 +1386,7 @@ p {
     page-break-after: avoid !important;
   }
 
-  /* 4. Content wrapper fits A4 with balanced grid layout and no overflow */
-  .container {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-    overflow: visible !important;
-    box-sizing: border-box !important;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1.25fr 0.75fr !important;
-    gap: 1.5rem !important;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-  }
-
-  .secondary-projects-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.25rem !important;
-  }
-
-  .exp-hack-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.25rem !important;
-  }
-
-  .journey-timeline {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-  }
-
-  .spotlight-card,
-  .contact-card {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* 5. Reduced vertical section padding and gaps for even page filling */
-  .hero-section {
-    padding: 1rem 0 1.5rem !important;
-  }
-
-  .hero-name {
-    font-size: 2.5rem !important;
-    background: none !important;
-    -webkit-text-fill-color: #ffffff !important;
-    color: #ffffff !important;
-  }
-
-  .skills-section,
-  .projects-section,
-  .experience-section,
-  .journey-section,
-  .contact-section {
-    padding: 1.25rem 0 !important;
-  }
-
-  .section-header {
-    margin-bottom: 1rem !important;
-  }
-
-  .spotlight-card {
-    padding: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .contact-card {
-    padding: 1.75rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* 6. Button text contrast in print: Dark text on primary buttons, crisp contrast */
+  /* High contrast buttons & real clickable links */
   a {
     text-decoration: underline !important;
   }
@@ -1259,17 +1395,16 @@ p {
     display: inline-flex !important;
     text-decoration: underline !important;
     box-shadow: none !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.85rem !important;
   }
 
-  /* Gradient/Cyan Primary buttons: High-contrast dark text */
   a.btn-primary,
   .btn-primary {
     background: linear-gradient(135deg, #00e5ff, #38bdf8) !important;
     color: #050b14 !important;
     font-weight: 800 !important;
     text-decoration: underline !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 
   a.btn-primary *,
@@ -1277,15 +1412,12 @@ p {
     color: #050b14 !important;
   }
 
-  /* Secondary buttons: Solid navy background with white text and clear border */
   a.btn-secondary,
   .btn-secondary {
     background: #131d31 !important;
     color: #ffffff !important;
-    border: 1px solid rgba(56, 189, 248, 0.5) !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
     text-decoration: underline !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 
   a.btn-secondary *,
@@ -1293,7 +1425,7 @@ p {
     color: #ffffff !important;
   }
 
-  /* 7. Hide navbar, animated backgrounds, scroll-to-top, and print controls */
+  /* Hide interactive-only elements in print */
   .navbar,
   .bg-grid-pattern,
   .mobile-nav-drawer,
@@ -1303,19 +1435,9 @@ p {
   }
 
   *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  *,
   .reveal,
   .fade-in,
-  [data-reveal],
-  .portfolio-wrapper,
-  main,
-  section {
+  [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
